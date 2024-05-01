@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    justify-content: center;
+  }
+  
+  article {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h2, h3 { align-self: center; }
+
+  .code-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    max-width:500px; 
+  }
+
+  .code-header {
+    background-color: #f5f5f5;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .code-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+  }
+
+  .copy-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .copy-button:hover {
+    background-color: #65a4e8;
+  }
+  .code-box {
+    padding: 10px;
+    overflow-x: auto;
+      background-color: rgb(186, 194, 226);
+  background-image: linear-gradient(rgb(210 213 219) 1px, transparent 1px), linear-gradient(to right, rgb(210 213 219) 1px, rgb(240 241 245) 1px);
+  background-size: 10px 10px;
+  }
+
+  .code-box pre {
+    margin: 0;
+  }
+
+  .code-box code {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #333;
+  }

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <article>
+        <h2>To perform SQL query that demonstrate Join Queries- Inner Join, Outer Join, Left join, Right Join</h2>
+        <h3>Theroy</h3>
+        <p><b>SQL JOIN:</b> A JOIN clause is used to combine rows from two or more tables, based on a related column between them. Following are different types of join.
+            <br>
+            1. Equi-join/Inner join
+            <br>
+            2. Non-equi-join
+            <br>
+            3. Self-join
+            <br>
+            4. Outer join</p>
+        <p><b>Equi-join:</b>
+            A join that is based on equalities is called equi-join. '' operator is used in equi- join comparison. It retrieves rows from tables having a common column. It is also called simple join.</p>
+        <p><b>Non-equi-join:</b>
+            A join that specifies the relationship between columns belonging to different tables by making use of the relational operators (<, >, <=, >=, !=) other than the ' operator is calledas non-equi-join</p>
+        <P><b>Self-join:</b>
+            Joining a table to itself is known as self-join i.e. it joins one row in a table to another. Itcan compare each row of the table to itself and also with other rows of the same table</P>
+        <P><b>Outer join:</b>
+            An outer join returns all the rows returned by simple join or equi join as well as those rowsfrom one table that do not match any row from the other table. The symbol (+) represents outer join.</P>
+      </article>
+
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-name">Table create Code</span>
+          <button class="copy-button" onclick="copyCodeToClipboard()">Copy</button>
+        </div>
+        <div class="code-box">
+          <pre>
+            <code>
+                CREATE TABLE employees (
+                    employee_id INT PRIMARY KEY,
+                    employee_name VARCHAR(100),
+                    department_id INT
+                );
+                
+                CREATE TABLE departments (
+                    department_id INT PRIMARY KEY,
+                    department_name VARCHAR(100)
+                );
+                
+            </code>
+          </pre>
+        </div>
+        <div class="code-header">
+            <span class="code-name">Insert sample data</span>
+            <button class="copy-button" onclick="copyCodeToClipboard()">Copy</button>
+          </div>
+          <div class="code-box">
+            <pre>
+              <code>
+                INSERT INTO departments (department_id, department_name) VALUES 
+                (1, 'HR'),
+                (2, 'Finance'),
+                (3, 'Marketing');
+                
+                INSERT INTO employees (employee_id, employee_name, department_id) VALUES
+                (1, 'Alice', 1),
+                (2, 'Bob', 2),
+                (3, 'Charlie', 1),
+                (4, 'David', NULL);
+                
+                  
+              </code>
+            </pre>
+          </div>
+          <div class="code-header">
+            <span class="code-name">Inner join</span>
+            <button class="copy-button" onclick="copyCodeToClipboard()">Copy</button>
+          </div>
+          <div class="code-box">
+            <pre>
+              <code>
+                SELECT e.employee_id, e.employee_name, d.department_name
+                FROM employees e
+                INNER JOIN departments d ON e.department_id = d.department_id;
+              </code>
+            </pre>
+          </div>
+          <div class="code-header">
+            <span class="code-name">Left Join</span>
+            <button class="copy-button" onclick="copyCodeToClipboard()">Copy</button>
+          </div>
+          <div class="code-box">
+            <pre>
+              <code>
+                SELECT e.employee_id, e.employee_name, d.department_name
+                FROM employees e
+                LEFT JOIN departments d ON e.department_id = d.department_id;
+                
+              </code>
+            </pre>
+          </div>
+          <div class="code-header">
+            <span class="code-name">Right Join</span>
+            <button class="copy-button" onclick="copyCodeToClipboard()">Copy</button>
+          </div>
+          <div class="code-box">
+            <pre>
+              <code>
+                SELECT e.employee_id, e.employee_name, d.department_name
+                FROM employees e
+                RIGHT JOIN departments d ON e.department_id = d.department_id;
+                
+                
+              </code>
+            </pre>
+          </div>
+          <div class="code-header">
+            <span class="code-name">Outer Join</span>
+            <button class="copy-button" onclick="copyCodeToClipboard()">Copy</button>
+          </div>
+          <div class="code-box">
+            <pre>
+              <code>
+                SELECT e.employee_id, e.employee_name, d.department_name
+                FROM employees e
+                LEFT JOIN departments d ON e.department_id = d.department_id
+                
+                UNION
+                
+                SELECT e.employee_id, e.employee_name, d.department_name
+                FROM employees e
+                RIGHT JOIN departments d ON e.department_id = d.department_id
+                WHERE e.employee_id IS NULL;
+                
+                
+              </code>
+            </pre>
+          </div>
+      </div>
+      
+      <script>
+      function copyCodeToClipboard() {
+        const codeElement = document.querySelector('.code-box code');
+        const textArea = document.createElement('textarea');
+        textArea.value = codeElement.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Code copied to clipboard!');
+      }
+      </script>
+        
+      </body>
+</html>
